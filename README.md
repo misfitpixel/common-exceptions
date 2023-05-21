@@ -1,12 +1,34 @@
-#Creating Exceptions
+# common-exceptions
+Exception handler and shared exceptions for misfitpixel PHP projects based on the [Symfony](https://symfony.com/) framework.
 
-Custom exceptions should extend from _Exception\Abstraction\BaseException.php_.
+### Creating Exceptions
 
-Each of these exceptions are based on the Symfony4 native HTTPException, and allow storing of an error message and an
+Custom exceptions should extend from _MisfitPixel\Common\Exception\Abstraction\BaseException_.
+
+Each of these exceptions are based on the Symfony native HTTPException, and allow storing of an error message and an
 HTTP status code.
 
-Whenever an exception is incurred, logic is passed through our event controller at
-_Exception\Controller\ExceptionController.php_
+The exception handler must be enabled manually as a service in _config/services.yaml_:
+```yaml
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    ...
+services:
+...
+  # EXCEPTIONS
+  MisfitPixel\Common\Exception\Controller\ExceptionController:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception }
+    arguments:
+      $debug: '%kernel.debug%'
+...
+```
+
+Whenever an exception is incurred, logic is passed through our event controller. If the consumed exception is of type _MisfitPixel\Common\Exception\Abstraction\BaseException_ then it will be processed as a standardized JSON block, or as a custom HTML template.  Otherwise, exception handling is deferred to the native Symfony handler.
 
 Each custom controller should have at least two of a possible three protected attributes initialized with default
 values:
@@ -24,8 +46,8 @@ that failed some kind of validation.
 ```php
 ...
 
-/** @var int */
-    protected $statusCode = 400;
+    /** @var int */
+    protected $statusCode = Response::HTTP_BAD_REQUEST; // Status Code 400
 
     /** @var string */
     protected $message = 'Bad Request';
