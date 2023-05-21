@@ -1,0 +1,29 @@
+{
+    "name": "misfitpixel/common-exceptions",
+    "description": "Exception handler and shared exceptions",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Brandin Chiu",
+            "email": "brandin@misfitpixel.io"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4",
+        "symfony/framework-bundle": "^5.4",
+        "twig/twig": "^3.6"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        }
+    },
+    "autoload": {
+        "psr-4": { "Misfitpixel\\Common\\Exception\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}
