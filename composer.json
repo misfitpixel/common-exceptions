@@ -21,7 +21,7 @@
         }
     },
     "autoload": {
-        "psr-4": { "Misfitpixel\\Common\\Exception\\": "" },
+        "psr-4": { "MisfitPixel\\Common\\Exception\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]
