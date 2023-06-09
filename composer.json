@@ -1,5 +1,5 @@
 {
-    "name": "misfitpixel/common-exceptions",
+    "name": "misfitpixel/common-foundation",
     "description": "Exception handler and shared exceptions",
     "type": "library",
     "license": "proprietary",
