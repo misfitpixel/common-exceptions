@@ -1,5 +1,5 @@
-# common-exceptions
-Exception handler and shared exceptions for misfitpixel PHP projects based on the [Symfony](https://symfony.com/) framework.
+# common-foundation
+Generic support classes, exception handler and shared exceptions for misfitpixel PHP projects based on the [Symfony](https://symfony.com/) framework.
 
 ### Creating Exceptions
 
