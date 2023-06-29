@@ -13,7 +13,8 @@
     "require": {
         "php": ">=7.4",
         "symfony/framework-bundle": "^5.4",
-        "twig/twig": "^3.6"
+        "twig/twig": "^3.6",
+        "google/cloud-pubsub": "^1.43"
     },
     "config": {
         "platform": {
